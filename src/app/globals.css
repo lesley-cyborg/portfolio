@@ -1,0 +1,112 @@
+/* src/app/globals.css — Tailwind CSS v4 */
+@import "tailwindcss";
+
+/* Enables class-based dark mode (next-themes adds .dark to <html>) */
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --background: 0 0% 100%;
+  --foreground: 220 40% 10%;
+  --card: 0 0% 100%;
+  --card-foreground: 220 40% 10%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 220 40% 10%;
+  --primary: 85 90% 45%;             /* Neon Lime */
+  --primary-foreground: 220 40% 10%;
+  --secondary: 220 30% 95%;
+  --secondary-foreground: 220 40% 15%;
+  --muted: 220 30% 92%;
+  --muted-foreground: 220 25% 40%;
+  --accent: 190 90% 45%;             /* Electric Cyan */
+  --accent-foreground: 0 0% 100%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 220 30% 88%;
+  --input: 220 30% 88%;
+  --ring: 85 90% 45%;
+  --radius: 0.5rem;
+}
+
+.dark {
+  --background: 220 40% 5%;
+  --foreground: 0 0% 98%;
+  --card: 220 35% 8%;
+  --card-foreground: 0 0% 98%;
+  --popover: 220 35% 8%;
+  --popover-foreground: 0 0% 98%;
+  --primary: 85 90% 55%;             /* Glowing Neon Lime */
+  --primary-foreground: 220 40% 5%;
+  --secondary: 220 30% 15%;
+  --secondary-foreground: 0 0% 98%;
+  --muted: 220 30% 12%;
+  --muted-foreground: 220 20% 65%;
+  --accent: 190 90% 55%;             /* Glowing Electric Cyan */
+  --accent-foreground: 220 40% 5%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 220 30% 18%;
+  --input: 220 30% 18%;
+  --ring: 85 90% 55%;
+}
+
+/* Maps our CSS variables into Tailwind's theme so utilities like
+   bg-primary, border-border, text-foreground exist again */
+@theme inline {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: hsl(var(--background));
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted-foreground) / 0.3);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary) / 0.6);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
